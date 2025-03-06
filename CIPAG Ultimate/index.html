@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caixa inteligente CIPAG</title>
+
+    <!-- Favicon (opcional) -->
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/3594/3594357.png"
+    />
+    <!-- CSS for responsive slogan -->
+    <style>
+      .slogan {
+        text-align: center;
+        margin: 1em 0;
+      }
+      
+      .typewriter {
+        font-size: 0.8rem; /* Reduced from 1rem */
+        line-height: 1.4;
+        margin: 0;
+        padding: 0.5em;
+      }
+
+      /* Desktop screens */
+      @media screen and (min-width: 768px) {
+        .typewriter {
+          font-size: 0.9rem; /* Reduced from 1.1rem */
+        }
+      }
+
+      /* Large desktop screens */
+      @media screen and (min-width: 1200px) {
+        .typewriter {
+          font-size: 1rem; /* Reduced from 1.2rem */
+        }
+      }
+
+      /* Small mobile screens */
+      @media screen and (max-width: 480px) {
+        .typewriter {
+          font-size: 0.7rem; /* Reduced from 0.9rem */
+        }
+      }
+    </style>
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- CSS for responsive slogan -->
+    <style>
+      .slogan {
+      text-align: center;
+      margin: 1em 0;
+      }
+      
+      .typewriter {
+      font-size: 1rem; /* Base font size */
+      line-height: 1.4;
+      margin: 0;
+      padding: 0.5em;
+      }
+
+      /* Desktop screens */
+      @media screen and (min-width: 768px) {
+      .typewriter {
+        font-size: 1.1rem;
+      }
+      }
+
+      /* Large desktop screens */
+      @media screen and (min-width: 1200px) {
+      .typewriter {
+        font-size: 1.2rem;
+      }
+      }
+
+      /* Small mobile screens */
+      @media screen and (max-width: 480px) {
+      .typewriter {
+        font-size: 0.9rem;
+      }
+      }
+    </style>
+    <style>
+      body {
+        color: #00008B; /* Dark blue text */
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+
+      @media screen and (max-width: 768px) {
+        body {
+          font-size: 16px;
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="slogan">
+        <p class="typewriter">
+          <span class="typed-text"></span>
+          <span class="cursor">&nbsp;</span>
+        </p>
+        <style>
+          .typewriter {
+            font-size: 1.2em;
+            padding: 10px;
+          }
+          .cursor {
+            display: inline-block;
+            background-color: #ccc;
+            margin-left: 3px;
+            width: 3px;
+            animation: blink 1s infinite;
+          }
+          @keyframes blink {
+            0% { background-color: #ccc; }
+            49% { background-color: #ccc; }
+            50% { background-color: transparent; }
+            99% { background-color: transparent; }
+            100% { background-color: #ccc; }
+          }
+        </style>
+        <script>
+          const typedTextSpan = document.querySelector(".typed-text");
+          const text = "Um aplicativo Web para mudar a sua realidade financeira em pouco tempo";
+          let index = 0;
+          let isDeleting = false;
+
+          function type() {
+            if (!isDeleting && index <= text.length) {
+              typedTextSpan.textContent = text.substring(0, index);
+              index++;
+            } else if (isDeleting && index >= 0) {
+              typedTextSpan.textContent = text.substring(0, index);
+              index--;
+            }
+
+            if (index === text.length + 1) {
+              setTimeout(() => isDeleting = true, 1000);
+            } else if (index === 0) {
+              isDeleting = false;
+            }
+
+            setTimeout(type, isDeleting ? 50 : 100);
+          }
+
+          window.onload = type;
+        </script>
+      </div>
+      <div class="header-content">
+        <h1><i class="fas fa-chart-line"></i> CIPAG Ultimate</h1>
+        
+        <div class="theme-toggle">
+          <button id="toggleTheme" class="btn-theme">
+            <i class="fas fa-moon"></i>
+            <span>Alternar Tema</span>
+          </button>
+        </div>
+
+          <link rel="stylesheet" href="./css/styles.css" />
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      </div>
+      
+    </header>
+
+    <main>
+      <!-- Seção de Entrada de Dados -->
+      <section id="entrada-dados" class="section-card">
+        <h2>Adicionar Pagamentos e Despesas</h2>
+        <form id="formTransacao" class="form-grid">
+          <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <input
+              type="text"
+              id="categoria"
+              required
+              placeholder="Ex: Salário, Aluguel..."
+            />
+          </div>
+          <div class="form-group">
+            <label for="dia">Data</label>
+            <input
+              type="text"
+              id="dia"
+              required
+              maxlength="8"
+              placeholder="DD/MM/AA"
+            />
+          </div>
+          <div class="form-group">
+            <label for="horario">Horário</label>
+            <input type="time" id="horario" required />
+          </div>
+          <div class="form-group">
+            <label for="valor">Valor em Reais</label>
+            <input
+              type="text"
+              id="valor"
+              required
+              placeholder="R$ 0,00"
+              class="valor-input"
+            />
+          </div>
+          <div class="tipo-toggle">
+            <label class="switch">
+              <!-- Checkbox para alternar pagamento/despesa -->
+              <input type="checkbox" id="tipoTransacao" />
+              <span class="slider"></span>
+            </label>
+            <span id="tipoLabel">Pagamento</span>
+          </div>
+          <button type="submit" class="btn-primary">
+            <i class="fas fa-plus"></i> Adicionar
+          </button>
+        </form>
+      </section>
+
+      <!-- Porcentagens CIPA -->
+      <section id="porcentagens" class="section-card">
+        <h2>Distribuição CIPA</h2>
+        <div class="porcentagens-grid">
+          <div class="porcentagem-item">
+            <label for="porcC">Capital de Giro (C)</label>
+            <input
+              type="number"
+              id="porcC"
+              value="35"
+              min="0"
+              max="100"
+              step="0.1"
+            />
+            <p class="descricao">Renda Fixa (1,02% a.m)</p>
+          </div>
+          <div class="porcentagem-item">
+            <label for="porcI">Investimentos (I)</label>
+            <input
+              type="number"
+              id="porcI"
+              value="20"
+              min="0"
+              max="100"
+              step="0.1"
+            />
+            <p class="descricao">Reserva em Dólar (10% a.a)</p>
+          </div>
+          <div class="porcentagem-item">
+            <label for="porcP">Poupança (P)</label>
+            <input
+              type="number"
+              id="porcP"
+              value="20"
+              min="0"
+              max="100"
+              step="0.1"
+            />
+            <p class="descricao">Reserva em Ouro (20% a.a)</p>
+          </div>
+          <div class="porcentagem-item">
+            <label for="porcA">Aluguel/Fixas (A)</label>
+            <input
+              type="number"
+              id="porcA"
+              value="25"
+              min="0"
+              max="100"
+              step="0.1"
+            />
+            <p class="descricao">Despesas Fixas</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tabela de Registros -->
+      <section id="registros" class="section-card">
+        <h2>Tabela de Pagamentos e Despesas</h2>
+        <div class="table-container">
+          <table id="tabelaRegistros">
+            <thead>
+              <tr>
+                <th>Categoria</th>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Valor</th>
+                <th>Tipo</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="registrosBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Valores Acumulados -->
+      <section id="valores-acumulados" class="section-card">
+        <h2>Valores Acumulados</h2>
+        <div class="cipa-grid">
+          <div class="cipa-item">
+            <h3>Capital de Giro (C)</h3>
+            <p id="valorC" class="valor">R$ 0,00</p>
+            <p class="rendimento">+1,02% a.m</p>
+          </div>
+          <div class="cipa-item">
+            <h3>Investimentos (I)</h3>
+            <p id="valorI" class="valor">R$ 0,00</p>
+            <p class="rendimento">+10% a.a</p>
+          </div>
+          <div class="cipa-item">
+            <h3>Poupança (P)</h3>
+            <p id="valorP" class="valor">R$ 0,00</p>
+            <p class="rendimento">+20% a.a</p>
+          </div>
+          <div class="cipa-item">
+            <h3>Aluguel/Fixas (A)</h3>
+            <p id="valorA" class="valor">R$ 0,00</p>
+          </div>
+          <div class="cipa-item total">
+            <h3>Total Acumulado</h3>
+            <p id="valorTotal" class="valor">R$ 0,00</p>
+          </div>
+        </div>
+        <div id="mensagemAlerta" class="alert hidden"></div>
+      </section>
+
+      <!-- Gráficos -->
+      <section id="graficos" class="section-card">
+        <h2>Análise Gráfica</h2>
+        <div class="chart-controls">
+          <button class="chart-toggle-btn active" data-chart="line">
+            Linha
+          </button>
+          <button class="chart-toggle-btn" data-chart="candle">Candle</button>
+          <button class="chart-toggle-btn" data-chart="pie">Pizza</button>
+        </div>
+        <div class="chart-container">
+          <canvas id="lineChart"></canvas>
+          <canvas id="candleChart" class="hidden"></canvas>
+          <canvas id="pieChart" class="hidden"></canvas>
+        </div>
+      </section>
+
+      <!-- Projeções -->
+      <!DOCTYPE html>
+      <html lang="pt-BR">
+        <head>
+          <!-- ... (keep existing head content) ... -->
+          <style>
+            /* Add these styles to your CSS */
+            .container {
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 0 20px;
+            }
+
+            /* Make sections responsive */
+            .section-card {
+              width: 100%;
+              margin: 20px 0;
+              padding: 20px;
+              box-sizing: border-box;
+            }
+
+            /* Responsive form grid */
+            .form-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+              gap: 20px;
+            }
+
+            /* Responsive tables */
+            .table-container {
+              overflow-x: auto;
+            }
+
+            /* Responsive charts */
+            .chart-container {
+              width: 100%;
+              max-width: 800px;
+              margin: 0 auto;
+            }
+
+            /* Responsive for smaller screens */
+            @media (max-width: 768px) {
+              .porcentagens-grid,
+              .cipa-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              }
+              
+              .form-group {
+                width: 100%;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <!-- Wrap all your existing content from header to footer inside this container -->
+            <header>
+              <!-- ... (existing header content) ... -->
+            </header>
+
+            <main>
+              <!-- ... (existing main content) ... -->
+            </main>
+
+            <footer>
+              <!-- ... (existing footer content) ... -->
+            </footer>
+          </div>
+          <!-- ... (existing scripts) ... -->
+        </body>
+      </html>
+
+      <!-- Exportação -->
+      <section id="exportacao" class="section-card">
+        <h2>Exportar Relatórios</h2>
+        <div class="export-buttons">
+          <button id="exportarCIPAG" class="btn-primary">
+            <i class="fas fa-file-pdf"></i> Exportar CIPAG
+          </button>
+          <button id="exportarProjecao" class="btn-primary">
+            <i class="fas fa-file-pdf"></i> Exportar Projeção
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2025 Todos os direitos Reservados | Desenvolvido por Cezi Cola Tecnologia
+      </p>
+    </footer>
+    <!-- Bibliotecas -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Script principal -->
+    <script src="./js/script.js"></script>
+  </body>
+</html>
